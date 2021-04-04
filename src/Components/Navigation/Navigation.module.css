@@ -1,0 +1,53 @@
+.link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 20px;
+  height: 100%;
+  font-weight: 500;
+  text-decoration: none;
+  color: rgb(0, 0, 0);
+}
+
+.linkActive {
+  color: rgb(235, 0, 0);
+}
+
+.list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 70px;
+}
+
+.home {
+}
+
+.detailsPage {
+  display: flex;
+}
+
+.desc {
+  margin-left: 40px;
+}
+
+.genresList {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+h3 {
+  margin-top: 10px;
+  margin-bottom: 0;
+}
+
+p {
+  margin-top: 10px;
+  margin-bottom: 0;
+}
+
+form {
+  margin-bottom: 10px;
+}
