@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react';
-import * as api from '../../services/api';
+import { fetchReviews } from '../../services/api';
 
 export default function Reviews({ movieId }) {
   const [reviews, setReviews] = useState([]);
 
   useEffect(() => {
-    api.fetchReviews(movieId).then(setReviews);
+    fetchReviews(movieId).then(setReviews);
   }, [movieId]);
 
   return (

@@ -7,7 +7,7 @@ import {
   useParams,
   useRouteMatch,
 } from 'react-router-dom';
-import * as api from '../services/api';
+import { fetchMovieById } from '../services/api';
 import s from '../Components/Navigation/Navigation.module.css';
 
 const Cast = lazy(() =>
@@ -25,7 +25,7 @@ export default function MovieDetailsPage() {
   const location = useLocation();
 
   useEffect(() => {
-    api.fetchMovieById(movieId).then(setMovie);
+    fetchMovieById(movieId).then(setMovie);
   }, [movieId]);
 
   const handleButtonClick = () => {
@@ -44,7 +44,7 @@ export default function MovieDetailsPage() {
       {movie && (
         <div className={s.detailsPage}>
           <img
-            src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+            src={`https://image.tmdb.org/t/p/w500/${movie?.poster_path}`}
             alt={movie.title}
             height="200px"
           />
@@ -55,7 +55,7 @@ export default function MovieDetailsPage() {
             <h3>Genres</h3>
 
             <ul className={s.genresList}>
-              {movie.genres.map(genre => (
+              {movie?.genres.map(genre => (
                 <li key={genre.id}>{genre.name}&nbsp;</li>
               ))}
             </ul>

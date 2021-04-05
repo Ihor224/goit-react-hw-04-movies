@@ -2,33 +2,68 @@ import axios from 'axios';
 
 const BASE_URL = 'https://api.themoviedb.org/3/';
 const API_KEY = '4d0a04127880a649e2fd6707ef8a5d37';
+axios.defaults.baseURL = BASE_URL;
 
-export function fetchTrendingMovies() {
-  return axios
-    .get(`${BASE_URL}trending/movie/week?api_key=${API_KEY}`)
-    .then(({ data }) => data.results);
-}
+const fetchTrendingMovies = async () => {
+  try {
+    const { data } = await axios.get(`trending/movie/week?api_key=${API_KEY}`);
+    return data.results;
+  } catch (error) {
+    console.error('error');
+  }
+  return [];
+};
 
-export function fetchMovies(query) {
-  return axios
-    .get(`${BASE_URL}search/movie?api_key=${API_KEY}&query=${query}`)
-    .then(({ data }) => data.results);
-}
+const fetchMovies = async query => {
+  try {
+    const { data } = await axios.get(
+      `search/movie?api_key=${API_KEY}&query=${query}`,
+    );
+    return data.results;
+  } catch (error) {
+    console.error('error');
+  }
+  return [];
+};
 
-export function fetchMovieById(movieId) {
-  return axios
-    .get(`${BASE_URL}movie/${movieId}?api_key=${API_KEY}`)
-    .then(({ data }) => data);
-}
+const fetchMovieById = async movieId => {
+  try {
+    const { data } = await axios.get(`movie/${movieId}?api_key=${API_KEY}`);
+    return data;
+  } catch (error) {
+    console.error('error');
+  }
+  return [];
+};
 
-export function fetchCast(movieId) {
-  return axios
-    .get(`${BASE_URL}movie/${movieId}/credits?api_key=${API_KEY}`)
-    .then(({ data }) => data);
-}
+const fetchCast = async movieId => {
+  try {
+    const { data } = await axios.get(
+      `movie/${movieId}/credits?api_key=${API_KEY}`,
+    );
+    return data;
+  } catch (error) {
+    console.error('error');
+  }
+  return [];
+};
 
-export function fetchReviews(movieId) {
-  return axios
-    .get(`${BASE_URL}movie/${movieId}/reviews?api_key=${API_KEY}`)
-    .then(({ data }) => data.results);
-}
+const fetchReviews = async movieId => {
+  try {
+    const { data } = await axios.get(
+      `movie/${movieId}/reviews?api_key=${API_KEY}`,
+    );
+    return data.results;
+  } catch (error) {
+    console.error('error');
+  }
+  return [];
+};
+
+export {
+  fetchReviews,
+  fetchCast,
+  fetchMovieById,
+  fetchMovies,
+  fetchTrendingMovies,
+};

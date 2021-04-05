@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import * as api from '../services/api';
+import { fetchMovies } from '../services/api';
 import { NavLink, useHistory, useLocation } from 'react-router-dom';
 const queryString = require('query-string');
 
@@ -31,7 +31,7 @@ function MoviesPage() {
       search: `?query=${query}`,
     });
 
-    api.fetchMovies(query).then(setMoveis);
+    fetchMovies(query).then(setMoveis);
   };
 
   return (

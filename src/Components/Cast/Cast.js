@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react';
-import * as api from '../../services/api';
+import { fetchCast } from '../../services/api';
 
 export default function Cast({ movieId }) {
   const [credits, setCredits] = useState([]);
 
   useEffect(() => {
-    api.fetchCast(movieId).then(setCredits);
+    fetchCast(movieId).then(setCredits);
   }, [movieId]);
 
   return (
